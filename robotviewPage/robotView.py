@@ -4,10 +4,10 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt, QRect
 import sys
 
-class MyWindow(QWidget):
+class RobotViewWindow(QWidget):
 
     def __init__(self):
-        super(MyWindow, self).__init__()
+        super(RobotViewWindow, self).__init__()
         self.resize(812, 627)
         self.setWindowTitle("Base Station")
         self.initUI()
@@ -39,7 +39,7 @@ class MyWindow(QWidget):
         title.setStyleSheet("color:rgb(224, 251, 252)")
         title.setAlignment(Qt.AlignCenter)
         formLayout.addRow(title)
-        for i in range(20):
+        for i in range(20): # currently hardcoded num of logs
             b1 = QPushButton("Info")
             b1.setStyleSheet("background:rgb(152, 193, 217)")
             self.logs.append(b1)
@@ -73,18 +73,16 @@ class MyWindow(QWidget):
         columns.addLayout(columnLayout)
         columns.addLayout(columns2Layout)
         self.setLayout(columns)
-
-        # self.b1.clicked.connect(self.clicked)
     
-    def getInfo(self, label):
-        self.logs[label].setText("Hey! You clicked on this button!")
-        self.update(label)
+    # def getInfo(self, label):
+    #     self.logs[label].setText("Hey! You clicked on this button!")
+    #     self.update(label)
 
-    def update(self, label):
-        self.logs[label].adjustSize()
+    # def update(self, label):
+    #     self.logs[label].adjustSize()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    win = MyWindow()
+    win = RobotViewWindow()
     win.show()
     sys.exit(app.exec_())
